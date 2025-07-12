@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome - Digital Library{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user[1] }}</h2>
+
+<p><strong>Email:</strong> {{ user[3] }}</p>
+<p><strong>Mobile:</strong> {{ user[2] }}</p>
+<p><strong>Gender:</strong> {{ user[5] }}</p>
+<p><strong>Location:</strong> {{ user[6] }}</p>
+
+<!-- OLD (local file system) -->
+<img src="{{ url_for('static', filename='uploads/' + user[7]) }}" width="150" alt="User Image" />
+
+<!-- ✅ NEW (S3 URL stored in DB) -->
+<img src="{{ user[7] }}" width="150" alt="User Image" />
+
+<a href="{{ url_for('user_page') }}">Go to User Page</a>
+{% endblock %}
