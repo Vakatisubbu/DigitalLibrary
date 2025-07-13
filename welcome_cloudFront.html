@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome - Digital Library{% endblock %}
+
+{% block content %}
+  <h2>Welcome, {{ user[1] }}</h2>
+
+  <p><strong>Email:</strong> {{ user[3] }}</p>
+  <p><strong>Mobile:</strong> {{ user[2] }}</p>
+  <p><strong>Gender:</strong> {{ user[5] }}</p>
+  <p><strong>Location:</strong> {{ user[6] }}</p>
+
+{% if user[7] %}
+  <p><strong>Profile Image:</strong></p>
+  <img src="{{ user[7] }}" 
+       alt="User Profile Image" 
+       width="120" height="120" 
+       style="border-radius: 10px; object-fit: cover; border: 1px solid #ccc;">
+{% else %}
+  <p><em>No image uploaded.</em></p>
+{% endif %}
+
+
+  <br><br>
+  <a href="{{ url_for('user_page') }}" class="btn btn-primary">Go to User Page</a>
+{% endblock %}
